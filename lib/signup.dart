@@ -1,3 +1,4 @@
+import 'package:zowar/login.dart';
 import 'package:flutter/material.dart';
 
 class Signup extends StatefulWidget {
@@ -13,13 +14,13 @@ class _Signup extends State<Signup> {
   bool obscureText = true;
   bool cheakboxpressed = false;
   bool abc = true;
-  TextEditingController Your_usernamecontroller = TextEditingController();
+  TextEditingController Your_phonecontroller = TextEditingController();
   TextEditingController Your_emailcontroller = TextEditingController();
 
   final _formState = GlobalKey<FormState>();
 
   // regular expression to check if string
-  RegExp pass_valid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
+  RegExp pass_valid = RegExp(r"(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.\W)");
   //A function that validate user entered password
   bool validatePassword(String pass) {
     String _password = pass.trim();
@@ -30,6 +31,10 @@ class _Signup extends State<Signup> {
     }
   }
 
+  FocusNode filedemail = FocusNode();
+  FocusNode filedphone = FocusNode();
+  FocusNode filedpass = FocusNode();
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -56,9 +61,10 @@ class _Signup extends State<Signup> {
                   'assets/images/logo.png',
                 ),
               ),
+              ////////////////////whitebox/////////////////////////////
               Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 250, 249, 246),
+                    color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(45)),
                   ),
                   child: Form(
@@ -68,6 +74,10 @@ class _Signup extends State<Signup> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          SizedBox(
+                            height: 45,
+                          ),
+
                           //create a zuwar text
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -95,51 +105,102 @@ class _Signup extends State<Signup> {
                               ),
                             ],
                           ),
+//////////////////////////////////////Email Address
+                          SizedBox(
+                            height: 30,
+                          ),
 
-                          Text(
-                            'Username',
-                            style: TextStyle(color: Color(0xffB8B8B8)),
-                          ),
-                          //username
-                          SizedBox(
-                            height: height * 0.06,
-                            width: width * 0.84,
-                            child: TextFormField(
-                              controller: Your_usernamecontroller,
-                              keyboardType: TextInputType.name,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
                           Text(
                             'Email Address',
                             style: TextStyle(color: Color(0xffB8B8B8)),
                           ),
-                          //email
+
                           SizedBox(
                             height: height * 0.06,
                             width: width * 0.84,
                             child: TextFormField(
+                              focusNode: filedemail,
                               controller: Your_emailcontroller,
                               keyboardType: TextInputType.emailAddress,
+                              onTap: () {
+                                _scrollController.jumpTo(
+                                    _scrollController.position.maxScrollExtent);
+                              },
+                              onFieldSubmitted: (value) {
+                                _scrollController.jumpTo(
+                                    _scrollController.position.minScrollExtent);
+                              },
+                              onTapOutside: (event) {
+                                filedemail.unfocus();
+                                _scrollController.jumpTo(
+                                    _scrollController.position.minScrollExtent);
+                              },
+                              decoration: InputDecoration(
+                                hintText: 'Therappertainer@gmail.com',
+                                hintStyle: TextStyle(color: Colors.black),
+                              ),
                             ),
                           ),
                           SizedBox(
                             height: 20,
                           ),
+////////////////////////////////Phone Number
+                          Text(
+                            'Phone Number',
+                            style: TextStyle(color: Color(0xffB8B8B8)),
+                          ),
+
+                          SizedBox(
+                            height: height * 0.06,
+                            width: width * 0.84,
+                            child: TextFormField(
+                              focusNode: filedphone,
+                              controller: Your_phonecontroller,
+                              keyboardType: TextInputType.phone,
+                              onTap: () {
+                                _scrollController.jumpTo(
+                                    _scrollController.position.maxScrollExtent);
+                              },
+                              onFieldSubmitted: (value) {
+                                _scrollController.jumpTo(
+                                    _scrollController.position.minScrollExtent);
+                              },
+                              onTapOutside: (event) {
+                                filedphone.unfocus();
+                                _scrollController.jumpTo(
+                                    _scrollController.position.minScrollExtent);
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          ////////////////////////password
                           Text(
                             'Password',
                             style: TextStyle(color: Color(0xffB8B8B8)),
                           ),
 
-                          //password
                           SizedBox(
                             height: height * 0.06,
                             width: width * 0.84,
                             child: TextFormField(
+                              focusNode: filedpass,
                               controller: _passwordController,
                               obscureText: obscureText,
+                              onTap: () {
+                                _scrollController.jumpTo(
+                                    _scrollController.position.maxScrollExtent);
+                              },
+                              onFieldSubmitted: (value) {
+                                _scrollController.jumpTo(
+                                    _scrollController.position.minScrollExtent);
+                              },
+                              onTapOutside: (event) {
+                                filedpass.unfocus();
+                                _scrollController.jumpTo(
+                                    _scrollController.position.minScrollExtent);
+                              },
                               decoration: InputDecoration(
                                 suffixIcon: GestureDetector(
                                   onTap: () {
@@ -151,6 +212,8 @@ class _Signup extends State<Signup> {
                                       ? Icon(Icons.visibility_off)
                                       : Icon(Icons.visibility),
                                 ),
+                                hintText: '****',
+                                hintStyle: TextStyle(color: Colors.black),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -168,6 +231,9 @@ class _Signup extends State<Signup> {
                               },
                             ),
                           ),
+                          SizedBox(
+                            height: 10,
+                          ),
 
                           Row(
                             children: [
@@ -183,30 +249,38 @@ class _Signup extends State<Signup> {
                               Row(
                                 children: [
                                   Text(
-                                    'I agree to the ',
+                                    'I agree to the',
                                     style: TextStyle(
-                                        fontSize: 10, color: Color(0xffB1835B)),
+                                        fontSize: 12, color: Color(0xffB1835B)),
                                   ),
                                   Text(
-                                    'Terms of Service ',
+                                    'Terms of Service',
                                     style: TextStyle(
-                                        fontSize: 10, color: Color(0xff000000)),
+                                        fontSize: 12, color: Color(0xff000000)),
                                   ),
                                   Text(
-                                    'and ',
+                                    ' and',
                                     style: TextStyle(
-                                        fontSize: 10, color: Color(0xffB1835B)),
+                                        fontSize: 12, color: Color(0xffB1835B)),
                                   ),
                                   Text(
-                                    ' Privacy Policy  ',
+                                    ' Privacy',
                                     style: TextStyle(
-                                        fontSize: 10, color: Color(0xff000000)),
+                                        fontSize: 12, color: Color(0xff000000)),
+                                  ),
+                                  Text(
+                                    ' Policy',
+                                    style: TextStyle(
+                                        fontSize: 12, color: Color(0xff000000)),
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                          //login button
+                          SizedBox(
+                            height: 25,
+                          ),
+                          //sign up button
                           Center(
                             child: SizedBox(
                               height: 48,
@@ -222,8 +296,11 @@ class _Signup extends State<Signup> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Login',
-                                      style: TextStyle(color: Colors.black),
+                                      'Sign Up',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xff000000)),
                                     ),
                                   ],
                                 ),
@@ -238,8 +315,18 @@ class _Signup extends State<Signup> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: 20,
+                          ),
+
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => Login(),
+                                ),
+                              );
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -249,7 +336,7 @@ class _Signup extends State<Signup> {
                                 ),
                                 TextButton(
                                   onPressed: () {},
-                                  child: Text('login',
+                                  child: Text('Log In',
                                       style: TextStyle(
                                           color: Color(0xffA7C1D3),
                                           decoration:
