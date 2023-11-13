@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zowar/signup.dart';
-// import 'package:zowar/newpass.dart';
-// import 'package:zowar/signup.dart';
+import 'package:zowar/Password/newpass.dart';
 
 class Otp extends StatefulWidget {
   const Otp({super.key});
@@ -64,17 +63,16 @@ class _OtpState extends State<Otp> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.only(top: 50),
+        padding: EdgeInsets.only(top: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //back button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: IconButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -82,7 +80,7 @@ class _OtpState extends State<Otp> {
                 icon: Icon(Icons.arrow_back, color: Colors.black),
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 50),
               child: Text(
                 ' Verification',
@@ -98,7 +96,7 @@ class _OtpState extends State<Otp> {
                 SizedBox(
                   height: height * 0.08,
                 ),
-                const Text(
+                Text(
                   'Enter Verification Code',
                   style: TextStyle(
                       fontSize: 24,
@@ -109,7 +107,7 @@ class _OtpState extends State<Otp> {
                   height: height * 0.03,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Form(
                     key: _formState,
                     child: Row(
@@ -135,115 +133,18 @@ class _OtpState extends State<Otp> {
                           node: _pin4Node,
                           nextFocus: 0,
                         ),
-                        // SizedBox(
-                        //   height: 40,
-                        //   width: 40,
-                        //   child: TextFormField(
-                        //     controller: _pin1Controller,
-                        //     // autofocus: true,
-                        //     onSaved: (pin1) {},
-                        //     onChanged: (value) {
-                        //       if (value.length == 1) {
-                        //         FocusScope.of(context).nextFocus();
-                        //       } else {
-                        //         FocusScope.of(context).unfocus();
-                        //       }
-                        //     },
-                        //     keyboardType: TextInputType.number,
-                        //     maxLength: 1,
-                        //     decoration: InputDecoration(
-                        //       counterText: "",
-                        //       border: OutlineInputBorder(
-                        //           borderRadius: BorderRadius.circular(18)),
-                        //     ),
-                        //     textAlign: TextAlign.center,
-                        //     style: Theme.of(context).textTheme.titleLarge,
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: 36,
-                        //   width: 36,
-                        //   child: TextFormField(
-                        //     controller: _pin2Controller,
-                        //     // autofocus: true,
-                        //     onSaved: (pin2) {},
-                        //     onChanged: (value) {
-                        //       if (value.length == 1) {
-                        //         FocusScope.of(context).nextFocus();
-                        //       } else {
-                        //         FocusScope.of(context).previousFocus();
-                        //       }
-                        //     },
-                        //     keyboardType: TextInputType.number,
-                        //     maxLength: 1,
-                        //     decoration: InputDecoration(
-                        //       counterText: "",
-                        //       border: OutlineInputBorder(
-                        //           borderRadius: BorderRadius.circular(18)),
-                        //     ),
-                        //     textAlign: TextAlign.center,
-                        //     style: Theme.of(context).textTheme.titleLarge,
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: 36,
-                        //   width: 36,
-                        //   child: TextFormField(
-                        //     controller: _pin3Controller,
-                        //     // autofocus: true,
-                        //     onSaved: (pin3) {},
-                        //     onChanged: (value) {
-                        //       if (value.length == 1) {
-                        //         FocusScope.of(context).nextFocus();
-                        //       } else {
-                        //         FocusScope.of(context).previousFocus();
-                        //       }
-                        //     },
-                        //     keyboardType: TextInputType.number,
-                        //     maxLength: 1,
-                        //     decoration: InputDecoration(
-                        //       counterText: "",
-                        //       border: OutlineInputBorder(
-                        //           borderRadius: BorderRadius.circular(18)),
-                        //     ),
-                        //     textAlign: TextAlign.center,
-                        //     style: Theme.of(context).textTheme.titleLarge,
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: 36,
-                        //   width: 36,
-                        //   child: TextFormField(
-                        //     controller: _pin4Controller,
-                        //     // autofocus: true,
-                        //     onSaved: (pin4) {},
-                        //     onChanged: (value) {
-                        //       if (value.length == 1) {
-                        //         FocusScope.of(context).nextFocus();
-                        //       } else {
-                        //         FocusScope.of(context).previousFocus();
-                        //       }
-                        //     },
-                        //     keyboardType: TextInputType.number,
-                        //     maxLength: 1,
-                        //     decoration: InputDecoration(
-                        //       counterText: "",
-                        //       border: OutlineInputBorder(
-                        //           borderRadius: BorderRadius.circular(18)),
-                        //     ),
-                        //     textAlign: TextAlign.center,
-                        //     style: Theme.of(context).textTheme.titleLarge,
-                        //   ),
-                        // )
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      ' If you didn’t receive a code',
+                      ' If you didn’t receive a code,',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color(0xffABABAB)),
@@ -275,11 +176,12 @@ class _OtpState extends State<Otp> {
                     allPins =
                         '${_pin1Controller.text}${_pin2Controller.text}${_pin3Controller.text}${_pin4Controller.text}';
                     print(allPins);
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) => Npassword(),
-                    //   ),
-                    // );
+
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Npassword(),
+                      ),
+                    );
                   },
                   child: Container(
                     width: 300,
@@ -303,10 +205,27 @@ class _OtpState extends State<Otp> {
                 SizedBox(
                   height: 50,
                 ),
-                Text(
-                  ' Do you have an account?',
-                  style: TextStyle(color: Color(0xff8F8F8F)),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Signup(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    ' Do you have an account?',
+                    style: TextStyle(
+                      color: Color(0xff8F8F8F),
+                      fontSize: 18,
+                    ),
+                  ),
                 ),
+                /////////////
+                SizedBox(
+                  height: 5,
+                ),
+                ///////////////
                 Container(
                   width: 300,
                   height: 40,
@@ -327,12 +246,15 @@ class _OtpState extends State<Otp> {
                         ),
                       ],
                     ),
-                    style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          ),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Color(0xffFFFFFF),
+                      side: BorderSide(
+                        width: 1,
+                        color: Colors.black,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(21),
                         ),
                       ),
                     ),

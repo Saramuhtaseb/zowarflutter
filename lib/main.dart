@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zowar/Categories.dart';
-import 'package:zowar/edit.dart';
-import 'package:zowar/feed.dart';
-import 'package:zowar/home.dart';
-import 'package:zowar/login.dart';
-import 'package:zowar/profile.dart';
+import 'package:zowar/signup.dart';
 
 // import 'package:zowar/welcome.dart';
 
@@ -38,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: FirstScreen(),
+      home: Signup(),
     );
   }
 }

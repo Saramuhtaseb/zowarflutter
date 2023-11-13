@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zowar/changePassword.dart';
-import 'package:zowar/edit.dart';
+import 'package:zowar/Password/changePassword.dart';
+import 'package:zowar/Profile/edit.dart';
 import 'package:zowar/login.dart';
 
 class ProfileSetting extends StatefulWidget {

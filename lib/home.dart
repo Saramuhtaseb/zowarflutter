@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -25,7 +23,7 @@ class _FirstScreenState extends State<FirstScreen> {
   ];
   List<Container> toptrip = [
     Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 110.51,
       width: 102.58,
       child: Image.asset(
@@ -36,13 +34,13 @@ class _FirstScreenState extends State<FirstScreen> {
   ];
   List<Container> trip = [
     Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 126,
       width: 141,
       decoration: BoxDecoration(
-          color: Color(0xffAEC1C5),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: Color(0xff39757D))),
+          color: const Color(0xffAEC1C5),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          border: Border.all(color: const Color(0xff39757D))),
       child: Image.asset(
         'assets/images/logo.png',
         fit: BoxFit.contain,
@@ -51,12 +49,12 @@ class _FirstScreenState extends State<FirstScreen> {
   ];
   List<Container> Challenge = [
     Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 110.51,
       width: 102.58,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          border: Border.all(color: Color(0xff39757D))),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          border: Border.all(color: const Color(0xff39757D))),
       child: Image.asset(
         'assets/images/logo.png',
         fit: BoxFit.contain,
@@ -65,25 +63,25 @@ class _FirstScreenState extends State<FirstScreen> {
   ];
   categore({required child}) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 40,
       width: 100,
       decoration: BoxDecoration(
-          color: Color(0xffAEC1C5),
-          borderRadius: BorderRadius.all(Radius.circular(26.67)),
-          border: Border.all(color: Color(0xff39757D))),
+          color: const Color(0xffAEC1C5),
+          borderRadius: const BorderRadius.all(Radius.circular(26.67)),
+          border: Border.all(color: const Color(0xff39757D))),
       child: child,
     );
   }
 
   toptrips({required child}) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 110.51,
       width: 102.58,
       decoration: BoxDecoration(
-        color: Color(0xffFFFFFF),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: const Color(0xffFFFFFF),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         border: Border.all(color: Colors.black),
       ),
       child: child,
@@ -92,10 +90,10 @@ class _FirstScreenState extends State<FirstScreen> {
 
   trips({required child}) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 133,
       width: 342,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xffFFFFFF),
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
@@ -105,12 +103,12 @@ class _FirstScreenState extends State<FirstScreen> {
 
   challenges({required child}) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 257,
       width: 109,
       decoration: BoxDecoration(
-        color: Color(0xffFFFFFF),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: const Color(0xffFFFFFF),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         border: Border.all(color: Colors.black),
       ),
       child: child,
@@ -152,7 +150,7 @@ class _FirstScreenState extends State<FirstScreen> {
           BottomNavigationBarItem(
             icon: IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.chat_bubble,
                   color: Color(0xff8AB0B5),
                 )),

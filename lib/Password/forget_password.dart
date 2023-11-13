@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:zowar/l.dart';
-// import 'package:zowar/login.dart';
-// import 'package:zowar/signup.dart';
+import 'package:zowar/Password/Otp.dart';
+import 'package:zowar/login.dart';
+import 'package:zowar/signup.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -22,26 +22,21 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.only(top: 50),
+        padding: EdgeInsets.only(top: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //pop button
             Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                  size: 28,
-                ),
-              ),
-            ),
+                padding: EdgeInsets.only(left: 20),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back, color: Colors.black),
+                )),
             //forget
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 50, top: 20),
               child: Text(
                 'Forgot Pasword',
@@ -53,17 +48,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+              padding: EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 children: [
                   SizedBox(
                     height: height * 0.08,
                   ),
                   //email
-                  const Text(
-                    'Enter Your Email Address',
+                  Text(
+                    'Enter Email Address',
                     style: TextStyle(
                       fontSize: 18,
+                      fontWeight: FontWeight.w600,
                       color: Color(0xff000000),
                     ),
                   ),
@@ -84,14 +80,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              width: 3,
-                              color: Colors.grey,
+                              width: 1,
+                              color: Color(0xff444444),
                             ),
                             borderRadius:
                                 BorderRadius.circular(20), //<-- SEE HERE
                           ),
                           border: OutlineInputBorder(
-                            // borderSide: BorderSide(),
                             borderRadius:
                                 BorderRadius.circular(20), //<-- SEE HERE
                           ),
@@ -109,11 +104,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   InkWell(
                     onTap: () {
                       print(_yourEmailController);
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => Pass(),
-                      //   ),
-                      // );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Otp(),
+                        ),
+                      );
                     },
                     child: Container(
                       width: width * 0.8,
@@ -140,26 +135,40 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   //back
                   TextButton(
                     onPressed: () {
-                      // Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => Login(),
-                      //   ),
-                      // );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                      );
                     },
                     child: Text(
-                      'Back to sign in',
+                      'Back to log in',
                       style: TextStyle(
-                        color: Colors.grey,
+                          color: Color(0xffABABAB),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Signup(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      ' Do you have an account?',
+                      style: TextStyle(
+                        color: Color(0xffABABAB),
                         fontSize: 18,
                       ),
                     ),
                   ),
-                  const Text(
-                    ' Do you have an account?',
-                    style: TextStyle(
-                      color: Color(0xff8F8F8F),
-                      fontSize: 18,
-                    ),
+
+                  ////////////////
+                  SizedBox(
+                    height: 10,
                   ),
                   /////////////////////////
                   SizedBox(
@@ -167,11 +176,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     height: height * 0.055,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => Signup(),
-                        //   ),
-                        // );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Signup(),
+                          ),
+                        );
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -186,9 +195,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         ],
                       ),
                       style: OutlinedButton.styleFrom(
+                        backgroundColor: Color(0xffFFFFFF),
                         side: BorderSide(
-                          width: 3.0,
-                          color: Colors.grey,
+                          width: 1,
+                          color: Colors.black,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(

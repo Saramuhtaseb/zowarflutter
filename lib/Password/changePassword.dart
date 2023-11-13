@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+
 import 'package:zowar/login.dart';
 
-class Npassword extends StatefulWidget {
-  const Npassword({super.key});
+class Changepassword extends StatefulWidget {
+  const Changepassword({super.key});
 
   @override
-  State<Npassword> createState() => _NpasswordState();
+  State<Changepassword> createState() => _ChangepasswordState();
 }
 
-class _NpasswordState extends State<Npassword> {
+class _ChangepasswordState extends State<Changepassword> {
   bool obscureText = true;
   final _formState = GlobalKey<FormState>();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _PasswordController = TextEditingController();
+  final TextEditingController _NewPasswordController = TextEditingController();
+  final TextEditingController _PasswordConfirmController =
+      TextEditingController();
+
   // regular expression to check if string
-  RegExp pass_valid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
+  RegExp pass_valid = RegExp(r"(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.\W)");
   //A function that validate user entered password
   bool validatePassword(String pass) {
     String _password = pass.trim();
@@ -61,20 +66,19 @@ class _NpasswordState extends State<Npassword> {
                         height: 50,
                       ),
                       Text(
-                        'Enter New Password',
+                        'Enter your old Password',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Color(0xff000000)),
                       ),
-
                       Padding(
                           padding: const EdgeInsets.only(right: 40, left: 40),
                           child: SizedBox(
                             width: width * 0.8,
                             height: height * 0.07,
                             child: TextField(
-                              controller: _passwordController,
+                              controller: _PasswordController,
                               obscuringCharacter: '*',
                               obscureText: obscureText,
                               decoration: InputDecoration(
@@ -87,13 +91,55 @@ class _NpasswordState extends State<Npassword> {
                               ),
                             ),
                           )),
+                      Text(
+                        'Enter New Password',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff000000)),
+                      ),
 
+                      Padding(
+                        padding: const EdgeInsets.only(right: 40, left: 40),
+                        child: SizedBox(
+                          width: width * 0.8,
+                          height: height * 0.07,
+                          child: TextFormField(
+                            controller: _NewPasswordController,
+                            obscureText: obscureText,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 3, color: Colors.grey),
+                                borderRadius:
+                                    BorderRadius.circular(21), //<-- SEE HERE
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Please enter password";
+                              } else {
+                                //call function to check password
+                                bool result = validatePassword(value);
+                                if (result) {
+                                  // create account event
+                                  return null;
+                                } else {
+                                  return " Password should contain Capital, small letter & Number & Special";
+                                }
+                              }
+                            },
+                          ),
+                        ),
+                      ),
                       Text(
                         'Confirm Password',
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff000000)),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff000000),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
 
                       Padding(
@@ -102,7 +148,7 @@ class _NpasswordState extends State<Npassword> {
                             width: width * 0.8,
                             height: height * 0.07,
                             child: TextField(
-                              controller: _passwordController,
+                              controller: _PasswordConfirmController,
                               obscuringCharacter: '*',
                               obscureText: obscureText,
                               decoration: InputDecoration(
@@ -121,7 +167,7 @@ class _NpasswordState extends State<Npassword> {
                       //////////////////////////////////////////////////////////////////// send //////////////////////////////////////////////////////////////////
                       InkWell(
                         onTap: () {
-                          print(_passwordController);
+                          print(_PasswordController);
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => Login(),
